@@ -1,0 +1,1022 @@
+﻿<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>SION BARBEARIA | Design System</title>
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com" rel="preconnect"/>
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;800&family=Michroma&family=Orbitron:wght@400;700;900&family=Rajdhani:wght@600;700&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500&family=Inter:wght@300;400;500;600;700&family=Bebas+Neue&display=swap" rel="stylesheet"/>
+    
+    <!-- Icons -->
+    <script src="https://code.iconify.design/3/3.1.0/iconify.min.js"></script>
+    
+    <!-- Tailwind -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- GSAP / Lenis -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <script src="https://unpkg.com/@studio-freight/lenis@1.0.33/dist/lenis.min.js"></script>
+    
+    <style>
+        /* ========== CORE TOKENS ========== */
+        @font-face {
+            font-family: 'Android';
+            src: url('data:font/opentype;base64,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gIABAIDggICAgICAgICAgICAgICAgIAAAAMAQP9gAsAC4AATABcAGwAAASEVIRUhESEVIzUhNSE1IREhNTMDIxUzFxUzNQHAAQD/AAEA/wCA/wABAP8AAQCAgICAgIACYICA/oCAgICAAYCA/wCAgICAAAAAAwBA/+AC3gJgAAMABwALAAAXATMBAzUzFQE1MxVAAgSa/gCAgAGAgCACgP2AAgCAgP4AgIAAAAABAED/4ALAAmAACwAAAREzESEVIREjESE1AUCAAQD/AID/AAFgAQD/AID/AAEAgAABAEABYADAAmAAAwAAExEzEUCAAWABAP8AAAAAAQBA/2ACwALgAAcAAAEhESEVIREhAsD+AAIA/YACgAJg/YCAA4AAAAEAQP9gAsAC4AAHAAATIREhNSERIUACgP2AAgD+AALg/ICAAoAAAAABAEAA4AHAAmAACwAAEzUzFTMVIxUjNSM1wICAgICAAeCAgICAgIAAAQBA/+ACwAJgAAsAAAERMxEhFSERIxEhNQFAgAEA/wCA/wABYAEA/wCA/wABAIAAAQBA/+AAwADgAAMAADcRIxHAgOD/AAEAAAAAAAEAQADgAsABYAADAAA3NSEVQAKA4ICAAAEAQP/gAMAAYAADAAAXNTMVQIAggIAAAAEAQP/gAt4CYAADAAAXATMBQAIEmv4AIAKA/YAAAAAAAgBA/+ACwAJgAAMABwAAFxEhEScRIRFAAoCA/oAgAoD9gIABgP6AAAEAQP/gAMACYAADAAATESMRwIACYP2AAoAAAAABAED/4ALAAmAACwAAEyERIRUhFSERITUhQAKA/gACAP2AAgD+AAJg/oCAgAGAgAABAED/4ALAAmAACwAABSE1ITUhNSE1ITUhAsD9gAIA/gACAP4AAoAggICAgIAAAAABAED/4ALAAmAACQAAExEhETMRIxEhEcABgICA/gACYP8AAQD9gAEAAYAAAAEAQP/gAsACYAALAAABIRUhESE1ITUhESECwP4AAgD9gAIA/gACgAHggP6AgIABgAAAAAACAED/4ALAAmAABwALAAABFSEVIREhERMVITUCwP4AAgD9gIABgAJggID+gAKA/oCAgAAAAQBA/+ACwAJgAAUAABMhESMRIUACgID+AAJg/YACAAADAED/4ALAAmAAAwAHAAsAAAERIREXFSE1ARUhNQLA/YCAAYD+gAGAAmD9gAKAgICA/wCAgAAAAAIAQP/gAsACYAAHAAsAABc1ITUhESERARUhNUACAP4AAoD+AAGAIICAAYD9gAIAgIAAAAACAEAAYADAAeAAAwAHAAATFSM1ExUjNcCAgIAB4ICA/wCAgAACAED/4ADAAeAAAwAHAAATFSM1ExEjEcCAgIAB4ICA/wD/AAEAAAAAAQBA/+ACwAJgAAYAAAEVDQEVATUCwP4AAgD9gAJggL7CgAEAgAAAAAIAQABgAsAB4AADAAcAABM1IRUBNSEVQAKA/YACgAFggID/AICAAAABAED/4ALAAmAABgAAARUBNS0BNQLA/YACAP4AAWCA/wCAwr6AAAAAAgBA/+ACwAJgAAMADQAAJRUjNQEhESE1ITUhFSMBwID/AAKA/oABAP6AgGCAgAIA/oCAgIAAAAABAED/4ALAAmAACwAAJTUhNSERIRUhESERAUABAP6AAgD9gAKA4ICA/oCAAoD+gAABAED/4ALAAmAACAAABTUzCwEjATMBAYB8fK6SAQCAAQAggAFA/kACgP2AAAMAQP/gAsACYAADAAcADgAAATUhHQIhNTcXESERIRECQP6AAYBAQP2AAoABYICAgICAQED/AAKA/wAAAAEAQP/gAsACYAAHAAATIRUhESEVIUACgP4AAgD9gAJggP6AgAAAAAABAED/4ALAAmAACQAANyERITUhESERM8ABgP4AAoD9gIBgAYCA/YABgAAAAAEAQP/gAsACYAALAAABFSEVIRUhFSEVIRECwP4AAgD+AAIA/YACYICAgICAAoAAAAEAQP/gAsACYAAJAAATIRUhFSEVIREjQAKA/gACAP4AgAJggICA/wAAAAAAAQBA/+ACwAJgAAsAAAUhESEVIREhNSM1IQLA/YACgP4AAYCAAQAgAoCA/oCAgAAAAQBA/+ACwAJgAAsAABMRIREzESMRIREjEcABgICA/oCAAmD/AAEA/YABAP8AAoAAAQBA/+AAwAJgAAMAABMRIxHAgAJg/YACgAAAAAEAQP/gAsACYAAHAAA3IREzESERM8ABgID9gIBgAgD9gAEAAAEAQP/gAsACYAAKAAAXETMRATMJASMBEUCAAUa6/oABgLz+vCACgP8AAQD+uP7IAQD/AAABAED/4ALAAmAABQAABSERMxEhAsD9gIACACACgP4AAAEAQP/gA8ACYAALAAAXESERIxEhESMRIRFAA4CA/wCA/wAgAoD9gAIA/gACAP4AAAEAQP/gAsACYAAJAAAXETMBETMRIwERQIABgICA/oAgAoD+OgHG/YABuP5IAAAAAAIAQP/gAsACYAADAAcAABMRIRE3ESERwAGAgP2AAeD+gAGAgP2AAoAAAAAAAgBA/+ACwAJgAAMACQAAATUhFREjESERIQJA/oCAAoD+AAFggID+gAKA/oAAAAAAAgBA/2ACwAJgAAMACwAAExEhEQMhESERIxUjwAGAgP6AAoCAgAHg/oABgP4AAoD9gIAAAAIAQP/gAsACYAADAA0AABMVITUBIxEjESERIxMjwAGA/wCAgAKA4uKeAeCAgP8A/wACgP6A/wAAAQBA/+ACwAJgAAsAAAEhFSERITUhNSERIQLA/gACAP2AAgD+AAKAAeCA/oCAgAGAAAAAAAEAQP/gAsACYAAHAAATIRUhESMRIUACgP8AgP8AAmCA/gACAAAAAAABAED/4ALAAmAABwAAExEhETMRIRHAAYCA/YACYP4AAgD9gAKAAAAAAQBA/+ACwAJgAAYAAAkBIwEzGwECwP8AgP8AkLCwAmD9gAKA/kABwAAAAAABAED/4APAAmAACwAAExEhETMRIREzESERwAEAgAEAgPyAAmD+AAIA/gACAP2AAoAAAAAAAQBA/+ACwAJgAAsAAAEDMxc3MwMTIycHIwEw8KCgoKDw8KCgoKABIAFA1tb+wP7A1tYAAAEAQP/gAsACYAAIAAAFEQEzFzczAREBQP8AoKCinv8AIAEAAYDg4P6A/wAAAQBA/+ACwAJgAAcAAAUhASE1IQEhAsD9gAGA/oACgP6AAYAgAgCA/gAAAAABAED/YAHAAuAABwAAASERIRUhESEBwP8AAQD+gAGAAmD9gIADgAAAAQBA/+AC3gJgAAMAAAUBMwECQP4AmgIEIAKA/YAAAAABAED/YAHAAuAABwAAEyERITUhESFAAYD+gAEA/wAC4PyAgAKAAAAAAQBAAmABwANgAAUAABsCIycHQMK+gDxEAmABAP8AUFAAAAAAAQBA/2ACwP/gAAMAABc1IRVAAoCggIAAAQBAAmABQANgAAMAABMzEyNAgICAA2D/AAAAAAEAQP/gAsACYAAIAAAFNTMLASMBMwEBgHx8rpIBAIABACCAAUD+QAKA/YAAAwBA/+ACwAJgAAMABwAOAAABNSEdAiE1NxcRIREhEQJA/oABgEBA/YACgAFggICAgIBAQP8AAoD/AAAAAQBA/+ACwAJgAAcAABMhFSERIRUhQAKA/gACAP2AAmCA/oCAAAAAAAEAQP/gAsACYAAJAAA3IREhNSERIREzwAGA/gACgP2AgGABgID9gAGAAAAAAgBA/+ACwAJgAAMACwAAARUhNREhFSEVIRUhAsD9gAKA/gACAP2AAmCAgP8AgICAAAAAAAEAQP/gAsACYAAJAAATIRUhFSEVIREjQAKA/gACAP4AgAJggICA/wAAAAAAAQBA/+ACwAJgAAsAAAUhESEVIREhNSM1IQLA/YACgP4AAYCAAQAgAoCA/oCAgAAAAQBA/+ACwAJgAAsAABMRIREzESMRIREjEcABgICA/oCAAmD/AAEA/YABAP8AAoAAAQBA/+AAwAJgAAMAABMRIxHAgAJg/YACgAAAAAEAQP/gAsACYAAHAAA3IREzESERM8ABgID9gIBgAgD9gAEAAAEAQP/gAsACYAAKAAAXETMRATMJASMBEUCAAUa6/oABgLz+vCACgP8AAQD+uP7IAQD/AAABAED/4ALAAmAABQAABSERMxEhAsD9gIACACACgP4AAAEAQP/gA8ACYAALAAAXESERIxEhESMRIRFAA4CA/wCA/wAgAoD9gAIA/gACAP4AAAEAQP/gAsACYAAJAAAXETMBETMRIwERQIABgICA/oAgAoD+OgHG/YABuP5IAAAAAAIAQP/gAsACYAADAAcAABMRIRE3ESERwAGAgP2AAeD+gAGAgP2AAoAAAAAAAgBA/+ACwAJgAAMACQAAATUhFREjESERIQJA/oCAAoD+AAFggID+gAKA/oAAAAAAAgBA/2ACwAJgAAMACwAAExEhEQEhESERIRUjwAGA/wD/AAKA/wCAAeD+gAGA/gACgP2AgAAAAAACAED/4ALAAmAAAwANAAATFSE1ASMRIxEhESMTI8ABgP8AgIACgOLingHggID/AP8AAoD+gP8AAAEAQP/gAsACYAALAAABIRUhESE1ITUhESECwP4AAgD9gAIA/gACgAHggP6AgIABgAAAAAABAED/4ALAAmAABwAAEyEVIREjESFAAoD/AID/AAJggP4AAgAAAAAAAQBA/+ACwAJgAAcAABMRIREzESERwAGAgP2AAmD+AAIA/YACgAAAAAEAQP/gAsACYAAGAAAJASMBMxsBAsD/AID/AJCwsAJg/YACgP5AAcAAAAAAAQBA/+ADwAJgAAsAABMRIREzESERMxEhEcABAIABAID8gAJg/gACAP4AAgD9gAKAAAAAAAEAQP/gAsACYAALAAABAzMXNzMDEyMnByMBMPCgoKCg8PCgoKCgASABQNbW/sD+wNbWAAABAED/4ALAAmAACAAABREBMxc3MwERAUD/AKCgop7/ACABAAGA4OD+gP8AAAEAQP/gAsACYAAHAAAFIQEhNSEBIQLA/YABgP6AAoD+gAGAIAIAgP4AAAAAAQBA/+ACwAJgAAMAABcRIRFAAoAgAoD9gAAAAAEAQP9gAMAC4AADAAAXETMRQICgA4D8gAAAAAABAED/4ALAAmAAAwAAFxEhEUACgCACgP2AAAAAAQBAAKoBwAGqAAcAABM3FzcVBycHQICAgICAgAFCZmBimmZgYAAAAAEAQAFgAMACYAADAAATETMRQIABYAEA/wAAAAABAEABYADAAmAAAwAAExEzEUCAAWABAP8AAAAAAgBAAWABwAJgAAMABwAAExEzETMRMxFAgICAAWABAP8AAQD/AAAAAAIAQAFgAcACYAADAAcAABMRMxEzETMRQICAgAFgAQD/AAEA/wAAAAABAED/4ANAAmAAEQAAExEhESM1IRUhFSEVIRUhESM1wAKAgP6AAQD/AAIA/YCAAWABAP8AgICAgIABAIAAAAAAAQBA/+ACwAJgAA4AACUVIzUjNTMBMxc3MwEzFQHAgLS0/wCgnKae/wDMYICAgAGA8vL+gIAAAAABAED/4ANAAmAADwAABSERIzUzESEVIRUhFSEVIQNA/YCAgAKA/gACAP4AAgAgAQCAAQCAgICAAAIAQP9gAsAC4AAPABMAAAUhESE1MxUhFSERIRUhFSMRIxEzAUD/AAEAgAEA/wABAP8AgICAIAKAgICA/oCAgAKA/oAAAwBA/+ACwAJgAAMABwALAAA3NSEVARUjNRMVIzVAAoD/AICAgOCAgAGAgID+AICAAAAAAAEAQAFkATwCYAAHAAATMxUjFTMVI0D8ysr8AmAymDIAAgBAAWIBPgJgAAMADQAAExUzNQcjFSM1MxUjFyNymmY0Mv5aWj4CLjQ0Zmb+mGYAAQBAAWACQAJgABEAAAEjFSM1IzUhFSM1IxUjNSMVIwFCaDRmAgAyNDI0MgIszMw0/szMzMwAAAAAAAEAAA/mAAECpAwAAAkD2AAEAEP/gAAFAA8AgAAFABEAgAAFABL+zwAFACT/bAAFAC398gAFAEIAgAAFAEP/fAAFAET/bAAFAE398gAGAEP/CgAIAAn/KwAIAA7/KwAIABD/KwAIAB//KwAIAGH/GwAIAGr/KwAJAAj/OQAJAAz++gAJABH++gAJABL/OQAJABr++gAJACH++gAJADf/CgAJADv/SQAJADz/WQAJAD3/SQAJAD//KQAJAED/CgAJAEH++gAJAEL++gAJAEP+fAAJAFf/CgAJAFv/SQAJAFz/WQAJAF3/SQAJAGv++gAKAA8AgAAKABEAgAAKABL+0wAKACT/cAAKAC399gAKAEIAgAAKAEP/gAAKAET/cAAKAE399gALAAn/CgALAA7/CgALABD9/gALAB39/gALAB/9/gALACD9/gALAGH9/gALAGr/CgANAAz/fAANAA//fAANABEAgAANABL+zwANACT/bAANAC3/fAANAED/fAANAEH/fAANAEIAgAANAEP+/gANAET/bAANAE3/fAAOAAj/OQAOAAz++gAOABH++gAOABL/OQAOABr++gAOACH++gAOADf/CgAOADv/SQAOADz/WQAOAD3/SQAOAD//KQAOAED/CgAOAEH++gAOAEL++gAOAEP+fAAOAFf/CgAOAFv/SQAOAFz/WQAOAF3/SQAOAGv++gAPAAUAgAAPAAoAgAAPAA3/gAAPABr99gAPACL/AgAPADf/AgAPADn/YAAPADz/AgAPAD/+wwAPAEEAgAAPAEMAgAAPAFf/AgAPAFn/YAAPAFz/AgAPAGIAgAAPAGMAgAAPAGQAgAAPAGUAgAAPAGsAgAAPAGwAgAAPAG0AgAAQAAj/OQAQAAz9/gAQABEAgAAQABL/OQAQABr9/gAQACH+uwAQADf/CgAQADv/SQAQADz/WQAQAD3/SQAQAD//KQAQAED/CgAQAEEAgAAQAEIAgAAQAEMAgAAQAFf/CgAQAFv/SQAQAFz/WQAQAF3/SQAQAGsAgAARAAUAgAARAAn/AgARAAoAgAARAA0AgAARAA7/AgARABAAgAARABf99gARABr99gARAB/+wwARACL/AgARADf/AgAR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AEIAgABDAEP/fgBDAET/AABDAE399ABDAGEAgABDAGb/fgBDAGj/fgBDAGr/AABEAAX/aABEAAr/aABEAA3/aABEABr/OQBEACL/aABEADf/OQBEADn/CgBEADz/CgBEAD/++gBEAEH++gBEAEP+fABEAFf/OQBEAFn/CgBEAFz/CgBEAGL/aABEAGP/aABEAGT/aABEAGX/aABEAGv/aABEAGz/aABEAG3/GgBGAAn/CgBGAA7/CgBGABD9/gBGAB/+2wBGAGH9/gBGAGr/CgBJABH9/gBJABL/OQBJAEL9/gBMAEP/gABOAAn/CgBOAA7/CgBOABD+ywBOAB3/aABOAB/+ywBOACD/aABOAGH/CgBOAGr/CgBPAAX9/gBPAAn/CgBPAAr9/gBPAA39/gBPAA7/CgBPABD9/gBPABf9/gBPABr9/gBPAB/+ywBPACL/CgBPADf/CgBPADn/OQBPADz/CgBPAD/+XQBPAEH9/gBPAEP9gABPAFf/CgBPAFn/OQBPAFz/CgBPAGH9/gBPAGL9/gBPAGP9/gBPAGT9/gBPAGX9/gBPAGr/CgBPAGv9/gBPAGz9/gBPAG39/gBTABH9/gBTABL/OQBTAEL9/gBXAAn/CgBXAA7/CgBXAA/++gBXABD++gBXABH++gBXABL++gBXAB/++gBXACT/SQBXAC3++gBXAEL++gBXAET/SQBXAE3++gBXAGH++gBXAGr/CgBZAA//aABZABH/KQBZABL++gBZACT/CgBZAC3/aABZAEL++gBZAET/CgBZAE3/aABbAAn/OQBbAA7/OQBbABD/OQBbAB//OQBbAGH/aABbAGr/OQBcAAn/SQBcAA7/SQBcAA/++gBcABD/SQBcABH++gBcABL++gBcAB//SQBcACT/CgBcAC3++gBcAEL++gBcAET/CgBcAE3++gBcAGH/OQBcAGr/SQBdAAn/OQBdAA7/OQBdABD/OQBdAB//OQBdAGH/KQBdAGr/OQBhAAj/DgBhAAz98gBhABEAgABhABL/DgBhABr98gBhADf+/gBhADv/bABhADz/fABhAD3/HgBhAD//XQBhAED+/gBhAEEAgABhAEIAgABhAEMAgABhAFf+/gBhAFv/bABhAFz/fABhAF3/HgBhAGf/fABiAA8AgABiABEAgABiABL+0wBiACT/cABiAC399gBiAEIAgABiAEP/gABiAET/cABiAE399gBjAA8AgABjABEAgABjABL+0wBjACT/cABjAC399gBjAEIAgABjAEP/gABjAET/cABjAE399gBkAA8AgABkABEAgABkABL+zwBkACT/bABkAC398gBkAEIAgABkAEP/fABkAET/bABkAE398gBlAA8AgABlABEAgABlABL+zwBlACT/bABlAC398gBlAEIAgABlAEP/fABlAET/bABlAE398gBnABL/aABnAEL++gBpAAn/CgBpAA7/CgBpABD++gBpAB/++gBpAGH++gBpAGr/CgBqAAj/OQBqAAz++gBqABH++gBqABL/OQBqABr++gBqACH++gBqADf/CgBqADv/SQBqADz/WQBqAD3/SQBqAD//KQBqAED/CgBqAEH++gBqAEL++gBqAEP+fABqAFf/CgBqAFv/SQBqAFz/WQBqAF3/SQBqAGv++gBrAAn/BABrAA7/BABrAA8AgABrABAAgABrABEAgABrABL+xQBrACT/YwBrAC39+ABrAEIAgABrAET/YwBrAE39+ABrAGr/BABsAA8AgABsABEAgABsABL+0wBsACT/cABsAC399gBsAEIAgABsAEP/gABsAET/cABsAE399gBtAA8AgABtABEAgABtABL+3QBtACT/egBtAC3+AABtAEIAgABtAET/egBtAE3+AAAAAAAAEgDeAAEAAAAAAAAAHAAAAAEAAAAAAAEACwAjAAEAAAAAAAIABwAcAAEAAAAAAAMAGAAjAAEAAAAAAAQACwAjAAEAAAAAAAUALAA7AAEAAAAAAAYACgBnAAEAAAAAAAgAIgBxAAEAAAAAAAkADQAKAAMAAQQJAAAAOACTAAMAAQQJAAEAFgDZAAMAAQQJAAIADgDLAAMAAQQJAAMAMADZAAMAAQQJAAQAFgDZAAMAAQQJAAUAWAEJAAMAAQQJAAYAFAFhAAMAAQQJAAgARAF1AAMAAQQJAAkAGgCnQ29weXJpZ2h0IERhcnJlbGwgRmxvb2QgMjAxOFJlZ3VsYXJBbmRyb2lkIDEwMTpWZXJzaW9uIDEuMDBWZXJzaW9uIDEuMDAgTWFyY2ggMTAsIDIwMTgsIGluaXRpYWwgcmVsZWFzZUFuZHJvaWQxMDFIaWdoLUxvZ2ljIC8gTWFkZSB3aXRoIEZvbnRDcmVhdG9yAEMA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/2gAbP9oAG3/GgAGAAn/CgAO/woAEP3+AB/+2wBh/f4Aav8KAAMAEf3+ABL/OQBC/f4AAQBD/4AACAAJ/woADv8KABD+ywAd/2gAH/7LACD/aABh/woAav8KABwABf3+AAn/CgAK/f4ADf3+AA7/CgAQ/f4AF/3+ABr9/gAf/ssAIv8KADf/CgA5/zkAPP8KAD/+XQBB/f4AQ/2AAFf/CgBZ/zkAXP8KAGH9/gBi/f4AY/3+AGT9/gBl/f4Aav8KAGv9/gBs/f4Abf3+AAMAEf3+ABL/OQBC/f4ADgAJ/woADv8KAA/++gAQ/voAEf76ABL++gAf/voAJP9JAC3++gBC/voARP9JAE3++gBh/voAav8KAAgAD/9oABH/KQAS/voAJP8KAC3/aABC/voARP8KAE3/aAAGAAn/OQAO/zkAEP85AB//OQBh/2gAav85AA4ACf9JAA7/SQAP/voAEP9JABH++gAS/voAH/9JACT/CgAt/voAQv76AET/CgBN/voAYf85AGr/SQAGAAn/OQAO/zkAEP85AB//OQBh/ykAav85ABMACP8OAAz98gARAIAAEv8OABr98gA3/v4AO/9sADz/fAA9/x4AP/9dAED+/gBBAIAAQgCAAEMAgABX/v4AW/9sAFz/fABd/x4AZ/98AAkADwCAABEAgAAS/tMAJP9wAC399gBCAIAAQ/+AAET/cABN/fYACQAPAIAAEQCAABL+0wAk/3AALf32AEIAgABD/4AARP9wAE399gAJAA8AgAARAIAAEv7PACT/bAAt/fIAQgCAAEP/fABE/2wATf3yAAkADwCAABEAgAAS/s8AJP9sAC398gBCAIAAQ/98AET/bABN/fIAAgAS/2gAQv76AAYACf8KAA7/CgAQ/voAH/76AGH++gBq/woAFAAI/zkADP76ABH++gAS/zkAGv76ACH++gA3/woAO/9JADz/WQA9/0kAP/8pAED/CgBB/voAQv76AEP+fABX/woAW/9JAFz/WQBd/0kAa/76AAwACf8EAA7/BAAPAIAAEACAABEAgAAS/sUAJP9jAC39+ABCAIAARP9jAE39+ABq/wQACQAPAIAAEQCAABL+0wAk/3AALf32AEIAgABD/4AARP9wAE399gAIAA8AgAARAIAAEv7dACT/egAt/gAAQgCAAET/egBN/gAAAQA8AAQABQAGAAgACQAKAAsADQAOAA8AEAARABIAFAAdAB4AHwAgACEAIgAkACYAKQAsAC4ALwAzADcAOQA7ADwAPQA+AD8AQQBCAEMARABGAEkATABOAE8AUwBXAFkAWwBcAF0AYQBiAGMAZABlAGcAaQBqAGsAbABtAAAAAQAAAAoAHAAeAAFsYXRuAAgABAAAAAD//wAAAAAAAA==') format('opentype'); /* Using local custom font as the Android/Display font */
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        :root {
+            --c-bg: #F8F9FA;         /* Clean Light */
+            --c-dark: #2C5076;       /* Azul Encore */
+            --c-dark-elevated: #3A638C; /* Azul Encore Lighter */
+            --c-accent: #C1A268;     /* Ocre Sands */
+            --c-accent-glow: rgba(193, 162, 104, 0.5);
+            --c-white: #FFFFFF;
+            --c-white-dim: rgba(255, 255, 255, 0.7);
+            
+            --font-display: 'Android', 'Michroma', sans-serif;
+            --font-body: 'Montserrat', sans-serif;
+            --font-serif: 'Playfair Display', serif;
+            --font-tagline: 'Engravers Gothic BT', 'Montserrat', sans-serif;
+            
+            --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+            --ease-out-quart: cubic-bezier(0.25, 1, 0.5, 1);
+        }
+        
+        body {
+            background-color: var(--c-bg);
+            color: var(--c-dark);
+            font-family: var(--font-body);
+            margin: 0;
+            overflow-x: hidden;
+            opacity: 0; /* JS fade in after preloader */
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* ========== UTILITIES & ANIMATIONS ========== */
+        .display-font { font-family: var(--font-display); }
+        .serif-font { font-family: var(--font-serif); }
+        
+        /* Text Reveal Utilities */
+        .word-wrap {
+            display: inline-block;
+            overflow: hidden;
+            vertical-align: top;
+            padding-bottom: 0.1em;
+        }
+        .word-inner {
+            display: inline-block;
+            transform: translateY(110%);
+        }
+
+        /* Ambient Backgrounds */
+        .ambient-bg {
+            position: absolute;
+            width: 50vw;
+            height: 50vw;
+            background: radial-gradient(circle, var(--c-accent-glow) 0%, transparent 70%);
+            border-radius: 50%;
+            filter: blur(80px);
+            opacity: 0.3;
+            animation: floatAmbient 10s infinite alternate ease-in-out;
+            z-index: 0;
+            pointer-events: none;
+        }
+        @keyframes floatAmbient {
+            0% { transform: translate(0, 0) scale(1); }
+            100% { transform: translate(10%, 10%) scale(1.2); }
+        }
+
+        /* Noise Overlay */
+        .noise-overlay {
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            z-index: 9000;
+            opacity: 0.02; /* Reduzido de 0.04 para ficar mais sutil */
+            mix-blend-mode: multiply; /* Melhor mesclagem com o fundo */
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='1'/%3E%3C/svg%3E"); /* baseFrequency aumentado para grão mais fino */
+        }
+
+        /* PRELOADER */
+        .loader {
+            position: fixed;
+            inset: 0;
+            background: var(--c-dark);
+            z-index: 10000;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: var(--c-accent);
+        }
+        .loader-text {
+            font-family: var(--font-display);
+            font-size: 4vw;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+        }
+        .loader-bar-wrap {
+            width: 200px;
+            height: 2px;
+            background: rgba(255,255,255,0.1);
+            margin-top: 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+        .loader-bar {
+            position: absolute;
+            top: 0; left: 0; bottom: 0;
+            width: 0%;
+            background: var(--c-accent);
+        }
+
+        /* ========== NAVIGATION ========== */
+        .nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            padding: 1.5rem 3rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            transition: all 0.4s var(--ease-out-quart);
+            color: var(--c-white);
+        }
+        .nav.scrolled {
+            padding: 1rem 3rem;
+            background: rgba(17, 58, 93, 0.8);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(196, 154, 91, 0.2);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+        .nav-logo {
+            font-family: var(--font-display);
+            font-size: 1.2rem;
+            letter-spacing: 0.1em;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+        }
+        .nav-links a {
+            font-size: 0.75rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            position: relative;
+            transition: color 0.3s;
+        }
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px; left: 0;
+            width: 0; height: 1px;
+            background: var(--c-accent);
+            transition: width 0.3s var(--ease-out-expo);
+        }
+        .nav-links a:hover { color: var(--c-accent); }
+        .nav-links a:hover::after { width: 100%; }
+
+        /* ========== HERO ========== */
+        .hero {
+            min-height: 100vh;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            background: var(--c-dark);
+            color: var(--c-white);
+        }
+        .hero-img-wrap {
+            position: absolute;
+            inset: 0;
+            z-index: 1;
+        }
+        .hero-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.4;
+            filter: grayscale(20%) contrast(1.2);
+        }
+        .hero-content {
+            position: relative;
+            z-index: 10;
+            text-align: center;
+        }
+        .hero-title {
+            font-size: clamp(4rem, 12vw, 12rem);
+            line-height: 0.85;
+            text-transform: uppercase;
+            position: relative;
+        }
+        .hero-title span {
+            display: block;
+            background: linear-gradient(to bottom, #FFFFFF, #A0AAB2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .hero-title .gold-accent {
+            background: linear-gradient(to right, #C1A268, #E3C999, #C1A268);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-family: var(--font-tagline);
+            font-style: normal;
+            font-weight: 400;
+            font-size: 0.4em;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            margin-top: 0.1em;
+        }
+        .hero-glow {
+            position: absolute;
+            top: 50%; left: 50%;
+            transform: translate(-50%, -50%);
+            width: 60vw; height: 60vw;
+            background: radial-gradient(circle, var(--c-accent-glow) 0%, transparent 60%);
+            filter: blur(60px);
+            z-index: 2;
+            pointer-events: none;
+            mix-blend-mode: screen;
+        }
+
+        /* ========== SECTIONS ========== */
+        .ds-section {
+            padding: 8rem 2rem;
+            position: relative;
+            z-index: 10;
+            background: var(--c-bg);
+        }
+        .ds-section.dark {
+            background: var(--c-dark);
+            color: var(--c-white);
+        }
+        .section-header {
+            margin-bottom: 5rem;
+            border-bottom: 1px solid rgba(0,0,0,0.1);
+            padding-bottom: 2rem;
+        }
+        .dark .section-header { border-bottom-color: rgba(255,255,255,0.1); }
+        .section-num {
+            font-size: 0.8rem;
+            letter-spacing: 0.2em;
+            color: var(--c-accent);
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+        .section-title {
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-family: var(--font-display);
+        }
+
+        /* ========== UI COMPONENTS ========== */
+        
+        /* Buttons */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.75rem;
+            padding: 1rem 2rem;
+            font-size: 0.75rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.4s var(--ease-out-expo);
+            position: relative;
+            overflow: hidden;
+        }
+        .btn-primary {
+            background: var(--c-accent);
+            color: var(--c-dark);
+            box-shadow: 0 4px 15px rgba(196, 154, 91, 0.3);
+        }
+        .btn-primary::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: #D5B07A;
+            transform: translateY(100%);
+            transition: transform 0.4s var(--ease-out-expo);
+            z-index: 0;
+        }
+        .btn-primary:hover::before { transform: translateY(0); }
+        .btn-primary span, .btn-primary iconify-icon { position: relative; z-index: 1; }
+        
+        .btn-outline {
+            border: 1px solid var(--c-accent);
+            color: var(--c-accent);
+            background: transparent;
+        }
+        .btn-outline:hover {
+            background: var(--c-accent);
+            color: var(--c-dark);
+            box-shadow: 0 0 20px rgba(196, 154, 91, 0.4);
+        }
+
+        .btn-glow {
+            background: var(--c-dark);
+            color: var(--c-accent);
+            border: 1px solid rgba(196, 154, 91, 0.5);
+            box-shadow: 0 0 10px rgba(196, 154, 91, 0.2), inset 0 0 10px rgba(196, 154, 91, 0.1);
+        }
+        .btn-glow:hover {
+            box-shadow: 0 0 25px rgba(196, 154, 91, 0.6), inset 0 0 15px rgba(196, 154, 91, 0.4);
+            border-color: var(--c-accent);
+        }
+
+        /* Inputs */
+        .input-group {
+            position: relative;
+            margin-bottom: 2rem;
+            width: 100%;
+            max-width: 400px;
+        }
+        .input-field {
+            width: 100%;
+            background: transparent;
+            border: none;
+            border-bottom: 1px solid rgba(17, 58, 93, 0.3);
+            padding: 1rem 0;
+            font-size: 1rem;
+            color: var(--c-dark);
+            outline: none;
+            transition: border-color 0.3s;
+        }
+        .dark .input-field {
+            border-bottom-color: rgba(255,255,255,0.2);
+            color: var(--c-white);
+        }
+        .input-label {
+            position: absolute;
+            left: 0;
+            top: 1rem;
+            font-size: 1rem;
+            color: rgba(17, 58, 93, 0.5);
+            pointer-events: none;
+            transition: all 0.3s var(--ease-out-expo);
+        }
+        .dark .input-label { color: rgba(255,255,255,0.5); }
+        .input-field:focus ~ .input-label,
+        .input-field:not(:placeholder-shown) ~ .input-label {
+            top: -0.5rem;
+            font-size: 0.75rem;
+            color: var(--c-accent);
+        }
+        .input-field:focus {
+            border-bottom-color: var(--c-accent);
+        }
+
+        /* Cards */
+        .ds-card {
+            background: var(--c-white);
+            border: 1px solid rgba(0,0,0,0.05);
+            padding: 2.5rem;
+            transition: all 0.5s var(--ease-out-expo);
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.02);
+        }
+        .dark .ds-card {
+            background: var(--c-dark-elevated);
+            border-color: rgba(255,255,255,0.05);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+        }
+        .ds-card::after {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 3px;
+            background: var(--c-accent);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.5s var(--ease-out-expo);
+        }
+        .ds-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.08);
+        }
+        .dark .ds-card:hover {
+            box-shadow: 0 30px 60px rgba(0,0,0,0.4);
+        }
+        .ds-card:hover::after { transform: scaleX(1); }
+
+        /* Badges */
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            padding: 0.35rem 0.8rem;
+            border-radius: 50px;
+            font-size: 0.65rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+        .badge-gold { background: rgba(196, 154, 91, 0.15); color: #A47D43; border: 1px solid rgba(196, 154, 91, 0.3); }
+        .dark .badge-gold { color: var(--c-accent); }
+        .badge-blue { background: rgba(17, 58, 93, 0.1); color: var(--c-dark); }
+        .dark .badge-blue { background: rgba(255,255,255,0.1); color: var(--c-white); }
+
+        /* Modals & Tooltips */
+        .ds-tooltip {
+            position: relative;
+            display: inline-block;
+            cursor: pointer;
+            border-bottom: 1px dashed var(--c-accent);
+        }
+        .ds-tooltip .tooltip-text {
+            visibility: hidden;
+            background-color: var(--c-dark);
+            color: #fff;
+            text-align: center;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            position: absolute;
+            z-index: 1;
+            bottom: 150%;
+            left: 50%;
+            transform: translateX(-50%) translateY(10px);
+            opacity: 0;
+            transition: all 0.3s;
+            font-size: 0.75rem;
+            white-space: nowrap;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        .ds-tooltip .tooltip-text::after {
+            content: "";
+            position: absolute;
+            top: 100%; left: 50%;
+            margin-left: -5px;
+            border-width: 5px;
+            border-style: solid;
+            border-color: var(--c-dark) transparent transparent transparent;
+        }
+        .ds-tooltip:hover .tooltip-text {
+            visibility: visible;
+            opacity: 1;
+            transform: translateX(-50%) translateY(0);
+        }
+    </style>
+</head>
+<body>
+    
+    <!-- Utilities -->
+    <div class="noise-overlay"></div>
+
+    <!-- Preloader -->
+    <div class="loader">
+        <div class="loader-text">SION SYSTEM</div>
+        <div class="loader-bar-wrap">
+            <div class="loader-bar"></div>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="nav">
+        <div class="nav-logo">SION <span class="text-[var(--c-accent)] text-xl font-[var(--font-tagline)] tracking-widest ml-2">BARBER CLUB</span></div>
+        <div class="nav-links hidden md:flex">
+            <a href="#hero">Hero</a>
+            <a href="#typography">Typography</a>
+            <a href="#colors">Colors</a>
+            <a href="#components">Components</a>
+        </div>
+        <button class="md:hidden text-2xl text-white"><iconify-icon icon="solar:hamburger-menu-linear"></iconify-icon></button>
+    </nav>
+
+    <!-- 1. HERO DEMONSTRATION -->
+    <section id="hero" class="hero">
+        <div class="hero-img-wrap">
+            <img src="../assets/068eb8ef6075.webp" alt="Barbearia Hero" class="hero-img" onerror="this.src='https://images.unsplash.com/photo-1621605815971-fbc98d665033?w=1200&q=85&auto=format&fit=crop'"/>
+        </div>
+        <div class="hero-glow"></div>
+        <div class="hero-content max-w-7xl mx-auto px-6">
+            <div class="inline-flex items-center gap-4 mb-8 opacity-0 translate-y-10 hero-el">
+                <div class="w-10 h-px bg-[var(--c-accent)]"></div>
+                <span class="text-xs tracking-[0.3em] text-[var(--c-accent)] uppercase font-semibold">Living Documentation</span>
+                <div class="w-10 h-px bg-[var(--c-accent)]"></div>
+            </div>
+            
+            <h1 class="display-font hero-title mb-6">
+                <span class="hero-text-line opacity-0 translate-y-20 block">DESIGN</span>
+                <span class="hero-text-line opacity-0 translate-y-20 block gold-accent">System</span>
+            </h1>
+            
+            <p class="text-lg md:text-xl text-white/70 max-w-2xl mx-auto mb-12 opacity-0 translate-y-10 hero-el font-light leading-relaxed">
+                A perfect blend of modern brutalism and classic elegance. 
+                This living documentation showcases the foundational elements of the Sion Barber Club digital experience.
+            </p>
+            
+            <div class="flex flex-wrap justify-center gap-6 opacity-0 translate-y-10 hero-el">
+                <button class="btn btn-primary">
+                    <span>Explore System</span>
+                    <iconify-icon icon="solar:arrow-right-linear" class="text-lg"></iconify-icon>
+                </button>
+                <button class="btn btn-glow">
+                    <span><iconify-icon icon="solar:play-circle-linear" class="text-xl"></iconify-icon></span>
+                    <span>View Animations</span>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- 2. TYPOGRAPHY -->
+    <section id="typography" class="ds-section">
+        <div class="max-w-[1400px] mx-auto">
+            <div class="section-header">
+                <div class="section-num">01 / TYPOGRAPHY</div>
+                <h2 class="section-title split-animate">The Typographic Scale</h2>
+            </div>
+            
+            <div class="grid md:grid-cols-12 gap-12">
+                <!-- Specs -->
+                <div class="md:col-span-4 space-y-8 border-r border-black/5 pr-8">
+                    <div>
+                        <h4 class="text-xs uppercase tracking-widest text-gray-400 mb-2">Display Font</h4>
+                        <p class="display-font text-2xl">Android</p>
+                        <p class="text-sm mt-2 opacity-70">Used for massive hero headlines and the SION logo. Impactante e sofisticada.</p>
+                    </div>
+                    <div>
+                        <h4 class="text-xs uppercase tracking-widest text-gray-400 mb-2">Primary Body Font</h4>
+                        <p class="font-body text-xl font-bold">Montserrat</p>
+                        <p class="text-sm mt-2 opacity-70">Versatile, clean geometry. Used for UI elements, buttons, and paragraphs. Weights: Light (300), Regular (400), Bold (700).</p>
+                    </div>
+                    <div>
+                        <h4 class="text-xs uppercase tracking-widest text-gray-400 mb-2">Tagline Font</h4>
+                        <p class="text-2xl" style="font-family: var(--font-tagline)">Engravers Gothic BT</p>
+                        <p class="text-sm mt-2 opacity-70">Used exclusively for the "BARBER CLUB" tagline and fine contrasts.</p>
+                    </div>
+                </div>
+
+                <!-- Scale Preview -->
+                <div class="md:col-span-8 space-y-10">
+                    <div class="flex flex-col md:flex-row md:items-baseline gap-4 md:gap-8 pb-8 border-b border-black/5">
+                        <div class="w-24 text-xs uppercase text-gray-400">H1 (Display)</div>
+                        <div class="flex-1">
+                            <h1 class="display-font text-5xl md:text-7xl leading-none">PREMIUM</h1>
+                        </div>
+                        <div class="text-xs text-gray-400 text-right">Michroma / 7xl</div>
+                    </div>
+                    
+                    <div class="flex flex-col md:flex-row md:items-baseline gap-4 md:gap-8 pb-8 border-b border-black/5">
+                        <div class="w-24 text-xs uppercase text-gray-400">H2 (Section)</div>
+                        <div class="flex-1">
+                            <h2 class="font-body font-bold text-4xl md:text-5xl uppercase tracking-wider">Services Menu</h2>
+                        </div>
+                        <div class="text-xs text-gray-400 text-right">Montserrat / 5xl / Bold</div>
+                    </div>
+
+                    <div class="flex flex-col md:flex-row md:items-baseline gap-4 md:gap-8 pb-8 border-b border-black/5">
+                        <div class="w-24 text-xs uppercase text-gray-400">H3 (Card)</div>
+                        <div class="flex-1">
+                            <h3 class="font-body font-semibold text-2xl text-[var(--c-dark)]">Signature Haircut</h3>
+                        </div>
+                        <div class="text-xs text-gray-400 text-right">Montserrat / 2xl / SemiBold</div>
+                    </div>
+
+                    <div class="flex flex-col md:flex-row gap-4 md:gap-8 pb-8 border-b border-black/5">
+                        <div class="w-24 text-xs uppercase text-gray-400 mt-1">Body Large</div>
+                        <div class="flex-1">
+                            <p class="text-lg font-light leading-relaxed text-gray-700">
+                                Experience grooming at its finest. Our signature cut involves a meticulous consultation followed by precision scissors work and a hot towel finish.
+                            </p>
+                        </div>
+                        <div class="text-xs text-gray-400 text-right">Montserrat / lg / Light</div>
+                    </div>
+
+                    <div class="flex flex-col md:flex-row gap-4 md:gap-8 pb-8 border-b border-black/5">
+                        <div class="w-24 text-xs uppercase text-gray-400 mt-1">Body Standard</div>
+                        <div class="flex-1">
+                            <p class="text-base font-normal leading-relaxed text-gray-600">
+                                This is standard body copy used for descriptions, articles, and general text. It ensures maximum legibility while maintaining the brand's sophisticated tone.
+                            </p>
+                        </div>
+                        <div class="text-xs text-gray-400 text-right">Montserrat / base / Regular</div>
+                    </div>
+
+                    <div class="flex flex-col md:flex-row md:items-baseline gap-4 md:gap-8">
+                        <div class="w-24 text-xs uppercase text-gray-400">Helper / Label</div>
+                        <div class="flex-1">
+                            <span class="text-xs tracking-widest uppercase text-[var(--c-accent)] font-bold">Category Label</span>
+                        </div>
+                        <div class="text-xs text-gray-400 text-right">Montserrat / xs / Bold</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. COLORS -->
+    <section id="colors" class="ds-section dark overflow-hidden relative">
+        <div class="ambient-bg" style="top: -20%; right: -10%;"></div>
+        <div class="max-w-[1400px] mx-auto relative z-10">
+            <div class="section-header">
+                <div class="section-num">02 / COLORS</div>
+                <h2 class="section-title split-animate">Color Palette</h2>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Primary Dark -->
+                <div class="bg-[var(--c-dark)] border border-white/10 p-8 rounded-sm aspect-square flex flex-col justify-between hover:scale-105 transition-transform duration-500 shadow-2xl">
+                    <div class="space-y-2">
+                        <h3 class="text-2xl font-bold">Azul Encore</h3>
+                        <p class="text-xs uppercase tracking-widest opacity-60">Primary Brand</p>
+                    </div>
+                    <div class="space-y-1 text-sm font-mono opacity-80">
+                        <p>HEX: #2C5076</p>
+                        <p>RGB: 44, 80, 118</p>
+                        <p>Usage: Classe, Exclusividade, Estabilidade</p>
+                    </div>
+                </div>
+
+                <!-- Accent Gold -->
+                <div class="bg-[var(--c-accent)] text-[var(--c-dark)] p-8 rounded-sm aspect-square flex flex-col justify-between hover:scale-105 transition-transform duration-500 shadow-2xl">
+                    <div class="space-y-2">
+                        <h3 class="text-2xl font-bold">Ocre Sands</h3>
+                        <p class="text-xs uppercase tracking-widest opacity-70">Action / Accent</p>
+                    </div>
+                    <div class="space-y-1 text-sm font-mono opacity-90">
+                        <p>HEX: #C1A268</p>
+                        <p>RGB: 193, 162, 104</p>
+                        <p>Usage: Calor Humano, Autenticidade, Tradição</p>
+                    </div>
+                </div>
+
+                <!-- Light Base -->
+                <div class="bg-[var(--c-bg)] text-[var(--c-dark)] p-8 rounded-sm aspect-square flex flex-col justify-between hover:scale-105 transition-transform duration-500 shadow-2xl">
+                    <div class="space-y-2">
+                        <h3 class="text-2xl font-bold">Clean Light</h3>
+                        <p class="text-xs uppercase tracking-widest opacity-60">Background</p>
+                    </div>
+                    <div class="space-y-1 text-sm font-mono opacity-80">
+                        <p>HEX: #F8F9FA</p>
+                        <p>RGB: 248, 249, 250</p>
+                        <p>Usage: Main Background (Light Mode)</p>
+                    </div>
+                </div>
+
+                <!-- Elevated Dark -->
+                <div class="bg-[var(--c-dark-elevated)] border border-white/10 p-8 rounded-sm aspect-square flex flex-col justify-between hover:scale-105 transition-transform duration-500 shadow-2xl">
+                    <div class="space-y-2">
+                        <h3 class="text-2xl font-bold">Blue Elevated</h3>
+                        <p class="text-xs uppercase tracking-widest opacity-60">Surface</p>
+                    </div>
+                    <div class="space-y-1 text-sm font-mono opacity-80">
+                        <p>HEX: #1A4A76</p>
+                        <p>RGB: 26, 74, 118</p>
+                        <p>Usage: Cards, Modals, Nav (Dark Mode)</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Gradients & Context -->
+            <div class="mt-16 grid md:grid-cols-2 gap-12">
+                <div>
+                    <h4 class="text-xl font-bold mb-6">Gradient Applications</h4>
+                    <div class="h-32 rounded-sm w-full bg-gradient-to-r from-[var(--c-dark)] via-[var(--c-dark-elevated)] to-[var(--c-dark)] border border-white/10 mb-4 flex items-center justify-center text-sm tracking-widest uppercase">Dark Gradient</div>
+                    <div class="h-20 rounded-sm w-full bg-gradient-to-r from-[#C1A268] to-[#E3C999] mb-4 flex items-center justify-center text-sm tracking-widest uppercase text-[var(--c-dark)]">Gold Gradient (Text/Icons)</div>
+                </div>
+                <div>
+                    <h4 class="text-xl font-bold mb-6">Opacity Contexts (White)</h4>
+                    <div class="space-y-4">
+                        <div class="flex items-center gap-4">
+                            <div class="h-10 w-10 rounded-sm bg-white border border-white/20"></div>
+                            <span class="text-sm font-mono">100% - Primary Dark Mode Text</span>
+                        </div>
+                        <div class="flex items-center gap-4">
+                            <div class="h-10 w-10 rounded-sm bg-white/70 border border-white/20"></div>
+                            <span class="text-sm font-mono">70% - Secondary Dark Mode Text</span>
+                        </div>
+                        <div class="flex items-center gap-4">
+                            <div class="h-10 w-10 rounded-sm bg-white/10 border border-white/20"></div>
+                            <span class="text-sm font-mono">10% - Borders, Dividers, Subtle Backgrounds</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. UI COMPONENTS -->
+    <section id="components" class="ds-section">
+        <div class="max-w-[1400px] mx-auto">
+            <div class="section-header">
+                <div class="section-num">03 / COMPONENTS</div>
+                <h2 class="section-title split-animate">Interactive Elements</h2>
+            </div>
+
+            <!-- Buttons & Inputs -->
+            <div class="grid lg:grid-cols-2 gap-20 mb-20">
+                <!-- Buttons -->
+                <div>
+                    <h3 class="text-2xl font-bold mb-8">Buttons & Actions</h3>
+                    <div class="space-y-10">
+                        <div class="flex flex-wrap items-center gap-8">
+                            <div class="w-32 text-xs uppercase tracking-widest text-gray-400">Primary Solid</div>
+                            <button class="btn btn-primary">
+                                <span>Book Now</span>
+                            </button>
+                        </div>
+                        <div class="flex flex-wrap items-center gap-8">
+                            <div class="w-32 text-xs uppercase tracking-widest text-gray-400">Outline Active</div>
+                            <button class="btn btn-outline">
+                                <span>Services</span>
+                            </button>
+                        </div>
+                        <div class="flex flex-wrap items-center gap-8 bg-[var(--c-dark)] p-6 rounded-sm">
+                            <div class="w-32 text-xs uppercase tracking-widest text-white/50">Glow (Dark BG)</div>
+                            <button class="btn btn-glow">
+                                <span>Play Video</span>
+                            </button>
+                        </div>
+                        <div class="flex flex-wrap items-center gap-8">
+                            <div class="w-32 text-xs uppercase tracking-widest text-gray-400">Text Link</div>
+                            <a href="#" class="font-semibold text-[var(--c-dark)] border-b-2 border-[var(--c-accent)] pb-1 hover:text-[var(--c-accent)] transition-colors inline-flex items-center gap-2 group">
+                                Discover More <iconify-icon icon="solar:arrow-right-linear" class="group-hover:translate-x-1 transition-transform"></iconify-icon>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Inputs & Form -->
+                <div>
+                    <h3 class="text-2xl font-bold mb-8">Form Fields</h3>
+                    <div class="ds-card">
+                        <div class="input-group">
+                            <input type="text" class="input-field" placeholder=" " id="name-input">
+                            <label class="input-label" for="name-input">Full Name</label>
+                        </div>
+                        <div class="input-group">
+                            <input type="email" class="input-field" placeholder=" " id="email-input">
+                            <label class="input-label" for="email-input">Email Address</label>
+                        </div>
+                        <div class="input-group">
+                            <select class="input-field text-gray-500" id="service-select">
+                                <option value="" disabled selected></option>
+                                <option value="1">Signature Cut</option>
+                                <option value="2">Beard Trim</option>
+                            </select>
+                            <label class="input-label" for="service-select">Select Service</label>
+                            <div class="absolute right-0 top-4 pointer-events-none text-[var(--c-accent)]">
+                                <iconify-icon icon="solar:alt-arrow-down-linear"></iconify-icon>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Cards & Badges -->
+            <div class="mb-20">
+                <h3 class="text-2xl font-bold mb-8">Surfaces, Cards & Badges</h3>
+                <div class="grid md:grid-cols-3 gap-8">
+                    <!-- Card 1 -->
+                    <div class="ds-card">
+                        <div class="mb-4 flex justify-between items-start">
+                            <span class="badge badge-gold">Premium</span>
+                            <iconify-icon icon="solar:scissors-bold-duotone" class="text-3xl text-[var(--c-dark)]"></iconify-icon>
+                        </div>
+                        <h4 class="text-xl font-bold mb-2 text-[var(--c-dark)]">Signature Cut</h4>
+                        <p class="text-sm text-gray-500 mb-6 line-clamp-3">Our premium grooming experience focused on sharp lines, classic style, and hot towel finish.</p>
+                        <div class="flex items-center justify-between mt-auto">
+                            <span class="font-bold text-lg">R$ 80</span>
+                            <button class="text-[var(--c-accent)] hover:text-[var(--c-dark)] transition-colors"><iconify-icon icon="solar:add-circle-linear" class="text-2xl"></iconify-icon></button>
+                        </div>
+                    </div>
+                    
+                    <!-- Card 2 (Image Card) -->
+                    <div class="group relative overflow-hidden rounded-sm cursor-pointer shadow-xl h-[350px]">
+                        <img src="https://images.unsplash.com/photo-1599351431202-1e0f0137899a?w=600&q=85&auto=format&fit=crop" class="w-full h-full object-cover transition-transform duration-[1.5s] group-hover:scale-110" alt="Card Image">
+                        <div class="absolute inset-0 bg-gradient-to-t from-[var(--c-dark)] via-[var(--c-dark)]/40 to-transparent opacity-80"></div>
+                        <div class="absolute inset-0 p-6 flex flex-col justify-end text-white transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
+                            <span class="badge badge-blue w-max mb-3">Gallery</span>
+                            <h4 class="text-2xl display-font mb-1">THE SION SPACE</h4>
+                            <p class="text-sm text-white/70 opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100">Explore our environment designed for maximum comfort.</p>
+                        </div>
+                    </div>
+
+                    <!-- Tooltips & Modals Demo -->
+                    <div class="ds-card flex flex-col items-center justify-center text-center">
+                        <iconify-icon icon="solar:info-circle-linear" class="text-4xl text-[var(--c-accent)] mb-4"></iconify-icon>
+                        <h4 class="text-lg font-bold mb-4">Informational Elements</h4>
+                        <p class="text-sm text-gray-500 mb-6">Hover over the text below to see the tooltip component in action.</p>
+                        
+                        <div class="ds-tooltip font-semibold text-[var(--c-dark)]">
+                            Hover Me For Info
+                            <span class="tooltip-text">This is a helpful tooltip message!</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </section>
+
+    <!-- 5. ICONS & MOTION -->
+    <section id="icons" class="ds-section dark relative overflow-hidden">
+        <div class="ambient-bg" style="bottom: -20%; left: -10%;"></div>
+        <div class="max-w-[1400px] mx-auto relative z-10">
+            <div class="grid lg:grid-cols-2 gap-20">
+                <!-- Icons -->
+                <div>
+                    <div class="section-header border-none mb-10 pb-0">
+                        <div class="section-num">04 / ICONOGRAPHY</div>
+                        <h2 class="section-title split-animate">System Icons</h2>
+                    </div>
+                    <p class="text-white/60 font-light mb-8 max-w-md">Using Solar Icons (Iconify) for clean, geometric, and modern visual cues. Two-tone style used for primary emphasis.</p>
+                    
+                    <div class="grid grid-cols-4 sm:grid-cols-5 gap-6">
+                        <div class="flex flex-col items-center gap-3 p-4 bg-white/5 rounded hover:bg-[var(--c-accent)] hover:text-[var(--c-dark)] transition-colors cursor-pointer">
+                            <iconify-icon icon="solar:scissors-bold-duotone" class="text-3xl"></iconify-icon>
+                            <span class="text-[10px] uppercase tracking-widest opacity-70">Scissors</span>
+                        </div>
+                        <div class="flex flex-col items-center gap-3 p-4 bg-white/5 rounded hover:bg-[var(--c-accent)] hover:text-[var(--c-dark)] transition-colors cursor-pointer">
+                            <iconify-icon icon="solar:calendar-bold-duotone" class="text-3xl"></iconify-icon>
+                            <span class="text-[10px] uppercase tracking-widest opacity-70">Calendar</span>
+                        </div>
+                        <div class="flex flex-col items-center gap-3 p-4 bg-white/5 rounded hover:bg-[var(--c-accent)] hover:text-[var(--c-dark)] transition-colors cursor-pointer">
+                            <iconify-icon icon="solar:map-point-bold-duotone" class="text-3xl"></iconify-icon>
+                            <span class="text-[10px] uppercase tracking-widest opacity-70">Location</span>
+                        </div>
+                        <div class="flex flex-col items-center gap-3 p-4 bg-white/5 rounded hover:bg-[var(--c-accent)] hover:text-[var(--c-dark)] transition-colors cursor-pointer">
+                            <iconify-icon icon="solar:phone-bold-duotone" class="text-3xl"></iconify-icon>
+                            <span class="text-[10px] uppercase tracking-widest opacity-70">Contact</span>
+                        </div>
+                        <div class="flex flex-col items-center gap-3 p-4 bg-white/5 rounded hover:bg-[var(--c-accent)] hover:text-[var(--c-dark)] transition-colors cursor-pointer">
+                            <iconify-icon icon="solar:star-bold-duotone" class="text-3xl"></iconify-icon>
+                            <span class="text-[10px] uppercase tracking-widest opacity-70">Premium</span>
+                        </div>
+                        <div class="flex flex-col items-center gap-3 p-4 bg-white/5 rounded hover:bg-white hover:text-[var(--c-dark)] transition-colors cursor-pointer text-[var(--c-accent)]">
+                            <iconify-icon icon="solar:arrow-right-linear" class="text-3xl"></iconify-icon>
+                            <span class="text-[10px] uppercase tracking-widest opacity-70">Arrow R</span>
+                        </div>
+                        <div class="flex flex-col items-center gap-3 p-4 bg-white/5 rounded hover:bg-white hover:text-[var(--c-dark)] transition-colors cursor-pointer text-[var(--c-accent)]">
+                            <iconify-icon icon="solar:hamburger-menu-linear" class="text-3xl"></iconify-icon>
+                            <span class="text-[10px] uppercase tracking-widest opacity-70">Menu</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Motion -->
+                <div>
+                    <div class="section-header border-none mb-10 pb-0">
+                        <div class="section-num">05 / MOTION & FX</div>
+                        <h2 class="section-title split-animate">Animations</h2>
+                    </div>
+                    
+                    <div class="space-y-12">
+                        <!-- Text Reveal -->
+                        <div>
+                            <h4 class="text-sm font-bold uppercase tracking-widest text-[var(--c-accent)] mb-4">Text Reveal (.split-animate)</h4>
+                            <p class="display-font text-2xl split-animate">DYNAMIC REVEAL</p>
+                            <div class="h-1 w-full bg-white/10 mt-4 rounded overflow-hidden">
+                                <div class="h-full bg-[var(--c-accent)] w-1/3 animate-[slide_2s_ease-in-out_infinite_alternate]"></div>
+                            </div>
+                        </div>
+
+                        <!-- Hover Scale -->
+                        <div>
+                            <h4 class="text-sm font-bold uppercase tracking-widest text-[var(--c-accent)] mb-4">Hover Scale & Glow</h4>
+                            <div class="flex gap-4">
+                                <div class="h-24 w-24 bg-white/5 border border-white/10 rounded flex items-center justify-center hover:scale-110 hover:shadow-[0_0_30px_rgba(196,154,91,0.3)] hover:border-[var(--c-accent)] transition-all duration-500 cursor-pointer text-[var(--c-accent)]">
+                                    <iconify-icon icon="solar:cursor-square-linear" class="text-3xl"></iconify-icon>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="py-12 bg-black text-center relative overflow-hidden">
+        <div class="noise-overlay" style="opacity: 0.1"></div>
+        <div class="relative z-10">
+            <div class="display-font text-2xl text-white/20 mb-4">SION BARBER CLUB</div>
+            <p class="text-xs uppercase tracking-widest text-white/40">Design System V1.0</p>
+        </div>
+    </footer>
+
+    <script>
+        // Setup GSAP
+        gsap.registerPlugin(ScrollTrigger);
+
+        // Setup Lenis Smooth Scroll
+        const lenis = new Lenis({
+            duration: 1.2,
+            easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+            direction: 'vertical',
+            smooth: true,
+        });
+
+        function raf(time) {
+            lenis.raf(time);
+            requestAnimationFrame(raf);
+        }
+        requestAnimationFrame(raf);
+
+        // Preloader Animation
+        const tl = gsap.timeline({
+            onComplete: () => {
+                document.body.style.opacity = 1;
+                initAnimations();
+            }
+        });
+
+        tl.to('.loader-bar', { width: '100%', duration: 1.5, ease: 'power2.inOut' })
+          .to('.loader-text', { opacity: 0, y: -20, duration: 0.5 }, "-=0.2")
+          .to('.loader-bar-wrap', { opacity: 0, duration: 0.3 }, "-=0.5")
+          .to('.loader', { yPercent: -100, duration: 1, ease: 'power4.inOut' });
+
+        // Text Splitter Utility
+        function splitTextToWords(element) {
+            const text = element.innerText;
+            const words = text.split(' ');
+            element.innerHTML = '';
+            words.forEach(word => {
+                const wordWrap = document.createElement('span');
+                wordWrap.classList.add('word-wrap');
+                wordWrap.innerHTML = `<span class="word-inner">${word}&nbsp;</span>`;
+                element.appendChild(wordWrap);
+            });
+        }
+
+        document.querySelectorAll('.split-animate').forEach(el => {
+            splitTextToWords(el);
+        });
+
+        // Initialize Scroll Animations
+        function initAnimations() {
+            // Hero Intro
+            gsap.to('.hero-text-line', {
+                y: 0, opacity: 1, stagger: 0.15, duration: 1.2, ease: 'power4.out'
+            });
+            gsap.to('.hero-el', {
+                y: 0, opacity: 1, stagger: 0.1, duration: 1, ease: 'power3.out', delay: 0.4
+            });
+            gsap.to('.hero-img', {
+                scale: 1.05, duration: 10, ease: 'none', repeat: -1, yoyo: true
+            });
+
+            // Parallax Hero Image on scroll
+            gsap.to('.hero-img-wrap', {
+                yPercent: 30,
+                ease: 'none',
+                scrollTrigger: {
+                    trigger: '.hero',
+                    start: 'top top',
+                    end: 'bottom top',
+                    scrub: true
+                }
+            });
+
+            // Navbar Background on Scroll
+            ScrollTrigger.create({
+                start: 'top -50',
+                end: 99999,
+                toggleClass: {className: 'scrolled', targets: '.nav'}
+            });
+
+            // Text Reveals
+            const splitElements = document.querySelectorAll('.split-animate');
+            splitElements.forEach(el => {
+                const words = el.querySelectorAll('.word-inner');
+                gsap.to(words, {
+                    y: "0%",
+                    duration: 1,
+                    ease: "power3.out",
+                    stagger: 0.03,
+                    scrollTrigger: {
+                        trigger: el,
+                        start: "top 85%", 
+                        toggleActions: "play none none reverse"
+                    }
+                });
+            });
+            
+            // Fade Up Elements
+            gsap.utils.toArray('.ds-card').forEach(card => {
+                gsap.from(card, {
+                    y: 50, opacity: 0, duration: 0.8, ease: "power3.out",
+                    scrollTrigger: {
+                        trigger: card,
+                        start: "top 90%",
+                        toggleActions: "play none none reverse"
+                    }
+                });
+            });
+        }
+    </script>
+</body>
+</html>
